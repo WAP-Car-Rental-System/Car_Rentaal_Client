@@ -46,3 +46,17 @@ address{
 .visible-lg-inline-block {
   display: none !important;
 }
+
+footer{
+    margin-top: 20em;
+}
+.main-container{
+    position: relative;
+    top: 190px;
+    border: 2px solid;
+}
+label{
+    color: darkseagreen !important;
+}
+
+
