@@ -1,4 +1,4 @@
-/**eCarRentalUser.js
+/**eCarRentalCustomer.js
 *@author habtom W.michael
  */
 
@@ -9,15 +9,15 @@
     getAllCars();
 
     function getAllCars(){
-        const editButton = $("<button>",{
-            "text":"Edit",
-            "id":"editButton",
-            "name":"edit",
+        const rentButton = $("<button>",{
+            "text":"Rent",
+            "id":"rentButton",
+            "name":"rent",
         "css":{
             "color":"blue",
             "backgraund-color": "gray"
         }});
-        fetch("https://8080/car/list")
+        fetch("https://elibraryrestapi.herokuapp.com/elibrary/api/book/list")
         .then((response)=>{
             if(response.ok){
                 return response.json();
@@ -39,7 +39,7 @@
                 <td>${car.color}</td>
                 <td>${car.rentPrice}</td>
                 <td>${car.rentPrice}</td>
-                <td>${editButton.get(0).outerHTML}</td>
+                <td>${rentButton.get(0).outerHTML}</td>
                     </tr>
                     `;
                 });
@@ -50,7 +50,7 @@
                 </tr>
                 `;
             };
-            $("#addNewCarForm").hide();
+            $("#addNewBookForm").hide();
             document.querySelector("#tableBodyCarList").innerHTML=content;
 
         })
@@ -62,65 +62,57 @@
             </td>
             </tr>
             `;
-            $("#addNewCarForm").hide();
+           
             document.getElementById("#tableBodyCarList").innerHTML=tableBodyErrorMsg;
            
             console.log("Error message",errs);
         });
     }
 //************ */
-
-    $("#buttonNewCar").click(function(event){
+var rentPrice;
+    $("#rentButton").click(function(event){
+        rentPrice=$("#rentPrice").val();
         event.preventDefault();
       
-        $("#addNewCarForm").show();
+        $("#addNewPaymentForm").show();
         $("#carDatTable").hide();
-        const formstate = $("#buttonNewCar").attr("data-formstate");
+        const formstate = $("#buttonNewStatus").attr("data-formstate");
         if(formstate=="off"){
-            $("#buttonNewCar").text("Close");
-            $("#listOfCars").text("New Car Registration Form");
-            $("#divNewCarForm").show("slow");
-            $("#brand").focus();
-            $("#buttonNewCar").attr("data-formstate","on");
+            $("#buttonNewStatus").text(" ");
+            $("#listOfCars").text("Payment Form");
+            $("#divNewPaymentForm").show("slow");
+            $("#dateFrom").focus();
+            $("#buttonNewStatus").attr("data-formstate","on");
         }else{
-            $("#buttonNewCar").text("Register A New Car");
-            $("#listOfCars").text("List Of All Cars");
+            $("#buttonNewStatus").text("");
+            $("#listOfCars").text("List Of Available Cars");
             $("#divNewCarForm").show("slow");
             $("#brand").focus();
-            $("#buttonNewBook").attr("data-formstate","off");
+            $("#buttonNewStatus").attr("data-formstate","off");
         }
 
     });
 // on submitting the form
-function saveNewCar(){
-    const bookRegistrationForm=document.getElementById("addNewCarForm");
-    const txtBrand= $("#brand");
-    const txtModel=$("#model");
-    const txtProductionYear= $("#productionYear");
-    const txtMileage=$("#mileage");
-    const txtColor=$("#color");
+function savePayment(){
+    const bookRegistrationForm=document.getElementById("addNewPaymentForm");
+    const txtDateFrom= $("#dateFrom");
+    const txtReturnDate=$("#returnDate");
     const txtRentPrice=$("#rentPrice");
     bookRegistrationForm.addEventListener("submit",function(e){
         e.preventDefault();
-        const brand = txtBrand.val();
-        const model=txtModel.val();
-        const productionYear= txtProductionYear.val();
-        const mileage=txtMileage.val();
-        const color=txtColor.val();
+        const dateFrom = txtDateFrom.val();
+        const returnDate=txtReturnDate.val();
         const rentPrice= txtRentPrice.val();
        
-        const newCarData={
-            "brand":brand,
-            "model":model,
-            "productionYear":productionYear,
-            "mileage":mileage,
-            "color":color,
+        const newPaymentData={
+            "dateFrom":dateFrom,
+            "returnDate":returnDate,
             "rentPrice":rentPrice
         };
-        console.log(newCarData);
-        fetch("http://localhost/add",{
+        console.log(newPaymentData);
+        fetch("https://elibraryrestapi.herokuapp.com/elibrary/api/book/add",{
             method:"post",
-            body:JSON.stringify(newCarData),
+            body:JSON.stringify(newPaymentData),
             headers:{
                 "Content-Type":"application/json"
             }
@@ -128,28 +120,24 @@ function saveNewCar(){
             return{"status":"ok"};
         }).then(function(jsonResponseData){
            // console.log(jsonResponseData);
-            getAllCars();
            
-            txtBrand.Value="";
-            txtModel.Value="";
-            txtProductionYear.Value="0.0";
-            txtMileage.Value="";
-            txtColor.Value="";
+           
+           txtDateFrom.Value="";
+           txtReturnDate.Value="";
             txtRentPrice.Value="";
-            txtIsbn.focus();
-            $("#addNewCarForm").hide();
+            $("#addNewPaymentForm").hide();
             $("#carDatTable").hide();
-
+            $("#listOfCars").text("Congratulations Payment Done sucessfully!, We are happy to see you again");
         }).catch(function(error){
             console.error(error);
-            $("#addNewCarForm").hide();
+            $("#addNewPaymentForm").hide();
         })
        
     });
 
    
 }
-saveNewCar();
+savePayment();
 })();
 
 
