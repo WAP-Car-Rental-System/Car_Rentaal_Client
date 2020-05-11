@@ -1,0 +1,48 @@
+/**
+*My Custome Css
+*/
+
+address{
+    color: white;
+}
+
+#contact-form{
+    margin-right: 10px !important;
+}
+
+.carousel{
+    background: #1A237E;	
+ }
+ .carousel .item{
+     height:300px;
+ }
+ 
+ .item img{
+      position: absolute;
+      top: 0;
+      left: 0;
+      min-height: 300px;
+ }
+ .flag{
+    width: 60px;
+    margin: 10px;
+}
+
+.flags{
+    padding: 20px;
+    width: 20%;
+}
+.visible-xs-block,
+.visible-xs-inline,
+.visible-xs-inline-block,
+.visible-sm-block,
+.visible-sm-inline,
+.visible-sm-inline-block,
+.visible-md-block,
+.visible-md-inline,
+.visible-md-inline-block,
+.visible-lg-block,
+.visible-lg-inline,
+.visible-lg-inline-block {
+  display: none !important;
+}
