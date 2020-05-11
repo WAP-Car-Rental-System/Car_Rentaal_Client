@@ -46,3 +46,16 @@ address{
 .visible-lg-inline-block {
   display: none !important;
 }
+.container{
+    color: aliceblue;
+}
+.form-group col-md-8{
+    color:blue;
+    background-color: aliceblue;
+}
+table{
+    color: aliceblue;
+}
+small{
+    color: beige !important;
+}
