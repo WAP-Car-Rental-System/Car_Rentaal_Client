@@ -115,3 +115,39 @@ small{
 td{
     color: black;
 }
+footer{
+    margin-top: 400px;
+}
+.page-content-margin{
+    position: relative;
+    top: 12em;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: 40px;
+    border: 2px solid;
+}
+.body-bg{
+    background-color: #F1F4F7
+}
+.var-bg{
+    background-color: #2c364b
+}
+th,label{
+    color: black
+}
+.lable-top{
+    top: 2em;
+}
+.inside-container{
+    position: relative;
+    top: 6px;
+}
+#listOfCars{
+    color: black;
+    font-size: 16px;
+    font-weight: bold;
+}
+#divNewCarForm{
+  display: none;width: 100%; margin-bottom: 1em;
+}
