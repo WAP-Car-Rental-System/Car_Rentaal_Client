@@ -46,6 +46,7 @@ address{
 .visible-lg-inline-block {
   display: none !important;
 }
+<<<<<<< HEAD
 
 /*******************************************************************************
                                   Login Screen
@@ -98,4 +99,18 @@ body.login2 .checkbox label {
 body.login2 #forgotDiv,
 body.login2 #registerDiv {
     display: none;
+=======
+.container{
+    color: aliceblue;
+}
+.form-group col-md-8{
+    color:blue;
+    background-color: aliceblue;
+}
+table{
+    color: aliceblue;
+}
+small{
+    color: beige !important;
+>>>>>>> 9ddf1cc671ef90d929d6683205b03496a6039ac4
 }
