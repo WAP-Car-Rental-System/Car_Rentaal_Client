@@ -9,7 +9,7 @@
     getAllCars();
 
     function getAllCars(){
-        const editButton = $("<button>",{
+        const rentButton = $("<button>",{
             "text":"Edit",
             "id":"editButton",
             "name":"edit",
@@ -17,29 +17,31 @@
             "color":"blue",
             "backgraund-color": "gray"
         }});
-        fetch("https://8080/car/list")
+        fetch("http://localhost:8080/careRent/car/list")
         .then((response)=>{
             if(response.ok){
+                console.log(response);
                 return response.json();
             }else{
                 return Promise.reject({status:response.status,statusText: response.statusText});
             }
         })
         .then(cars=>{
+            console.log("Car List Size=" +(cars.length>0));
             let content="";
+            let size= cars.length;
             if(cars.length>0){
                 cars.forEach(function(car, i){
                     content+=`
                     <tr>
                         <th scope="row">${i+1}.</th>
-                <td>${car.brand}</td>
-                <td>${car.model}</td>
-                <td>${car.productionYear}</td>
-                <td>${car.mileage}</td>
-                <td>${car.color}</td>
-                <td>${car.rentPrice}</td>
-                <td>${car.rentPrice}</td>
-                <td>${editButton.get(0).outerHTML}</td>
+                        <td>${car.carBrand}</td>
+                        <td>${car.carModel}</td>
+                        <td>${car.carProductionYear}</td>
+                        <td>${car.mileage}</td>
+                        <td>${car.carColor}</td>
+                        <td>${car.transmission}</td>
+                        <td>${rentButton.get(0).outerHTML}</td>
                     </tr>
                     `;
                 });
@@ -110,15 +112,14 @@ function saveNewCar(){
         const rentPrice= txtRentPrice.val();
        
         const newCarData={
-            "brand":brand,
-            "model":model,
-            "productionYear":productionYear,
+            "carBrand":brand,
+            "carModel":model,
+            "carProductionYear":productionYear,
             "mileage":mileage,
-            "color":color,
-            "rentPrice":rentPrice
-        };
+            "carColor":color,
+            "transmission":"Automatic"};
         console.log(newCarData);
-        fetch("http://localhost/add",{
+        fetch("http://localhost:8080/careRent/car/newCar",{
             method:"post",
             body:JSON.stringify(newCarData),
             headers:{

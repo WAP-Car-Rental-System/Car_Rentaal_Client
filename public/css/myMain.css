@@ -112,3 +112,6 @@ table{
 small{
     color: beige !important;
 }
+td{
+    color: black;
+}

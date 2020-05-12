@@ -13,7 +13,7 @@
      * 
      */
     function getAllCars() {
-        fetch("http://localhost:8080/careRent//car/newCar")
+        fetch("http://localhost:8080/careRent/car/list")
         .then((response) => {
             if(response.ok) {                
             return response.json();
@@ -30,7 +30,7 @@
                 content += `
                         <tr>
                             <th scope="row">${i+1}.</th>
-                            <td>${book.isbn}</td>
+                            <td>${car.isbn}</td>
                             <td>${book.bookTitle}</td>
                             <td>${book.overDueFee}</td>
                             <td>${book.datePublished}</td>
@@ -105,7 +105,7 @@
                 "datePublished": dateOfPublished
             };
             // Remember to set Data/MIME type
-            fetch("http://localhost:8080/eLibrary/book/new", {
+            fetch("http://localhost:8080/careRent/car/newCar", {
                 method: "post",
                 body: JSON.stringify(newBookData),
                 headers: {

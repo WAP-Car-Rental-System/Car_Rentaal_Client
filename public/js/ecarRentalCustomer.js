@@ -17,28 +17,29 @@
             "color":"blue",
             "backgraund-color": "gray"
         }});
-        fetch("https://elibraryrestapi.herokuapp.com/elibrary/api/book/list")
-        .then((response)=>{
+        fetch("http://localhost:8080/careRent/car/list")
+        /*.then((response)=>{
             if(response.ok){
                 return response.json();
             }else{
                 return Promise.reject({status:response.status,statusText: response.statusText});
             }
-        })
+        })*/
+        .then(response=>response.json())
         .then(cars=>{
             let content="";
             if(cars.length>0){
                 cars.forEach(function(car, i){
+                    console.log(car.carBrand);
                     content+=`
                     <tr>
                         <th scope="row">${i+1}.</th>
-                <td>${car.brand}</td>
-                <td>${car.model}</td>
-                <td>${car.productionYear}</td>
+                <td>${car.carBrand}</td>
+                <td>${car.carModel}</td>
+                <td>${car.carProductionYear}</td>
                 <td>${car.mileage}</td>
-                <td>${car.color}</td>
-                <td>${car.rentPrice}</td>
-                <td>${car.rentPrice}</td>
+                <td>${car.carColor}</td>
+                <td>${car.transmission}</td>
                 <td>${rentButton.get(0).outerHTML}</td>
                     </tr>
                     `;
@@ -110,7 +111,7 @@ function savePayment(){
             "rentPrice":rentPrice
         };
         console.log(newPaymentData);
-        fetch("https://elibraryrestapi.herokuapp.com/elibrary/api/book/add",{
+        fetch("http://localhost:8080/careRent/car/newCar",{
             method:"post",
             body:JSON.stringify(newPaymentData),
             headers:{
