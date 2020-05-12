@@ -46,3 +46,56 @@ address{
 .visible-lg-inline-block {
   display: none !important;
 }
+
+/*******************************************************************************
+                                  Login Screen
+*******************************************************************************/
+body.login2{
+    height: auto;
+    background: #C04848;
+    background: -webkit-linear-gradient(to left, #C04848 , #480048);
+    background: linear-gradient(to left, #C04848 , #480048);
+}
+
+body.login2 .login{
+    width: 350px;
+    padding: 20px 25px;
+    background: #ffffff;
+    min-height: 100px;
+    margin: 10% auto 0%;
+    box-shadow: -21px 32px 40px rgba(0, 0, 0, 0.2); 
+}
+
+body.login2 .login .logo{
+    margin-bottom: 20px;
+}
+
+body.login2 .login .logo img{
+    height: 54px;
+}
+
+body.login2 .lnkRegister,
+body.login2 .lnkForgot{
+    text-decoration: none;
+    line-height: 4;
+    font-size: 13px;
+    margin-top: -3px;
+    color: #4F5367;
+}
+
+body.login2 .lnkRegister:hover,
+body.login2 .lnkRegister:focus,
+body.login2 .lnkForgot:hover,
+body.login2 .lnkForgot:focus {
+    text-decoration: none;
+    color: #00A8C6;
+}
+
+body.login2 .checkbox label {
+    padding-left: 0px;
+}
+
+body.login2 #forgotDiv,
+body.login2 #registerDiv {
+    display: none;
+}
