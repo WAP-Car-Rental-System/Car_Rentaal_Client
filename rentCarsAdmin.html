@@ -32,8 +32,8 @@
     <link href="/public/css/myMain.css"  rel="stylesheet">
 
 </head>
-<body>
-  <nav class="navbar navbar-inverse navbar-fixed-top" id="menu">
+<body class="body-bg">
+  <nav class="navbar navbar-inverse navbar-fixed-top var-bg" id="menu">
     <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -58,53 +58,22 @@
     </div><!--/.container-->
 </nav><!--/.navbar-->
 
-<div class="page-content">
+<div class="page-content page-content-margin">
 
     <!--HEADER-->
     <!--===============================================================-->
-    <header class="intro-header parallax" data-stellar-background-ratio="0.2" id="intro">
-        <div class="container">
-            <!--<div class="row">
-                <div class="row-md-6">
-                    <div>
-                        <img src="/public/images/home1.png" alt="iPhone" class="img-responsive">
-                    </div>
-                  <di>
-                    <h2><strong style="color: #05414a">Online Car Rental System <b style="color:#97be0c"></b>
-                        
-                  </di>  
-                </div>-->
-                <div class="hidden-xs col-sm-6 col-md-5 hidden-xs">
-                    <div class="smartphone parallax" data-stellar-background-ratio="0.4"></div>
-                </div>
-                <div class="col-xs-12 col-sm-6 col-md-7">
-                    <div class="intro-message">
-                        <div class="visible-xs-block pt20">
-                            <img src="/public/images/home1.png" alt="iPhone" class="img-responsive">
-                        </div>
-                        <h2><strong style="color: #05414a">Online Car Rental System <b style="color:#97be0c"></b>
-                        <div class="header-buttons">
-                            <a href="#pricing" class="btn btn-theme scroll-nav">Price List</a> 
-                            <a href="#about" class="btn btn-theme-alt">Cos'è ASAP Markets 2.0</a>
-                        </div>
-                    </div>
-                </div>
-            </div><!--/.row--> 
-        </div><!--/.container-->            
-    </header><!--/.intro-header-->
-
-    
-<div class="container">
+     
+<div class="container inside-container">
     <div>
       <span id="listOfCars" >List Of Cars Available</span>
       <span style="float: right;" >
-        <a id="buttonNewCar"  href="">Add New Car</a> </span>
+        <a id="buttonNewCar" data-formstate="off" class="btn btn-primary" href="#">Add New Car</a> </span>
     </div>
     
        <div id="divNewCarForm">
-        <form id="addNewCarForm">
+         <form id="addNewCarForm">
             <div class="form-row">
-              <div class="form-group col-md-6">
+              <div class="form-group col-md-6 lable-top">
                 <label for="brand">*Brand</label>
                 <input type="text" class="form-control" id="brand" placeholder="e.g Tesla" required>
                 <small  id="emailHelp" class="form-text text-muted">Enter Car Brand Name </small>
@@ -120,7 +89,7 @@
             <div class="form-row">
                 <div class="form-group col-md-6">
                   <label for="productionYear">*Production Year</label>
-                  <input type="text"  class="form-control"  id="productionYear" placeholder="$0.0" value="0.00" required>
+                  <input type="text"  class="form-control"  id="productionYear" placeholder="0" value="0" required>
                   <small  id="emailHelp" class="form-text text-muted">Enter Car production year </small>
                 </div>
               
@@ -180,13 +149,52 @@
               </tr>
           </tbody>
       </table>
-  </div>
-    
 
-</div>
+       <!-- Modal -->
+       <div class="modal fade" id="ModalAdd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <form class="form-horizontal" method="POST" action="">
 
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Add Event</h4>
+                    </div>
+                    <div class="modal-body">
 
-    </main>
+                        <div class="form-group">
+                            <label for="sector" class="col-sm-2 control-label">Sector</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="sector" class="form-control" id="sector" placeholder="Sector">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="subSector" class="col-sm-2 control-label">Sub Sector</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="subSector" class="form-control" id="subSector" placeholder="Sub Sector">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="occupation" class="col-sm-2 control-label">Occupation</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="occupation" class="form-control" id="occupation" placeholder="Occupation">
+                            </div>
+                        </div>
+                        <div class="col-sm-10">
+                            <input type="hidden" name="id" class="form-control" id="id">
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary" onclick="save()">Save changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+  </div><!--Page Container-->
+</div>  <!--Page Contentent-->
     <footer>
       <div class="container">
           <div class="row">
@@ -216,8 +224,14 @@
   </footer><!--/footer-->
   <!--back to top-->
   <a href="#" id="scrollToTop"><i class="fa fa-angle-up"></i></a>
-  
-</div><!--/.page-content-->
+
+
+  <script>
+     function addCarCopy(carId){
+       console.log(document.getElementById("ModalAdd"));
+        console.log(carId);
+  } 
+  </script>
 
 <!--JAVASCRIPT-->
 <!--===============================================================-->

@@ -7,7 +7,6 @@
 (function(){
     "use strict"
     getAllCars();
-
     function getAllCars(){
         const rentButton = $("<button>",{
             "text":"Edit",
@@ -17,6 +16,7 @@
             "color":"blue",
             "backgraund-color": "gray"
         }});
+        
         fetch("http://localhost:8080/careRent/car/list")
         .then((response)=>{
             if(response.ok){
@@ -41,7 +41,15 @@
                         <td>${car.mileage}</td>
                         <td>${car.carColor}</td>
                         <td>${car.transmission}</td>
-                        <td>${rentButton.get(0).outerHTML}</td>
+                        <td><button onclick='addCarCopy(${car.carID})'>Edit</button></td>
+                        <td><td>${rentButton.get(0).outerHTML}</td>
+                        <td> 
+                              <button type='button'  
+                                  onclick=addCarCopy(${car.carID});  
+                                  class='btn btn-default'> 
+                                  Edit
+                                 </button>
+                        </td>
                     </tr>
                     `;
                 });
@@ -52,7 +60,7 @@
                 </tr>
                 `;
             };
-            $("#addNewCarForm").hide();
+            //$("#addNewCarForm").hide();
             document.querySelector("#tableBodyCarList").innerHTML=content;
 
         })
@@ -64,7 +72,7 @@
             </td>
             </tr>
             `;
-            $("#addNewCarForm").hide();
+            //$("#addNewCarForm").hide();
             document.getElementById("#tableBodyCarList").innerHTML=tableBodyErrorMsg;
            
             console.log("Error message",errs);
@@ -75,8 +83,8 @@
     $("#buttonNewCar").click(function(event){
         event.preventDefault();
       
-        $("#addNewCarForm").show();
-        $("#carDatTable").hide();
+        //$("#addNewCarForm").show();
+        //$("#carDatTable").hide();
         const formstate = $("#buttonNewCar").attr("data-formstate");
         if(formstate=="off"){
             $("#buttonNewCar").text("Close");
@@ -84,15 +92,20 @@
             $("#divNewCarForm").show("slow");
             $("#brand").focus();
             $("#buttonNewCar").attr("data-formstate","on");
-        }else{
-            $("#buttonNewCar").text("Register A New Car");
+        }else {
+            $("#buttonNewCar").text("Add New Car");
             $("#listOfCars").text("List Of All Cars");
-            $("#divNewCarForm").show("slow");
-            $("#brand").focus();
-            $("#buttonNewBook").attr("data-formstate","off");
+            $("#divNewCarForm").hide("slow");
+            $("#buttonNewCar").attr("data-formstate","off");
+            //$("#brand").focus();
+            //$("#buttonNewBook").attr("data-formstate","off");
         }
 
     });
+
+  function addCarCopy(carId){
+     console.log(carId);
+  } 
 // on submitting the form
 function saveNewCar(){
     const bookRegistrationForm=document.getElementById("addNewCarForm");
@@ -137,13 +150,14 @@ function saveNewCar(){
             txtMileage.Value="";
             txtColor.Value="";
             txtRentPrice.Value="";
-            txtIsbn.focus();
-            $("#addNewCarForm").hide();
-            $("#carDatTable").hide();
+            txtBrand.focus();
+            location.reload();
+            //$("#addNewCarForm").hide();
+            //$("#carDatTable").hide();
 
         }).catch(function(error){
             console.error(error);
-            $("#addNewCarForm").hide();
+            //$("#addNewCarForm").hide();
         })
        
     });
