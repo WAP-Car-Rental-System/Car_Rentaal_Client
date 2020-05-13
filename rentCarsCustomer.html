@@ -32,8 +32,8 @@
     <link href="/public/css/myMain.css"  rel="stylesheet">
 
 </head>
-<body>
-  <nav class="navbar navbar-inverse navbar-fixed-top" id="menu">
+<body class="body-bg">
+  <nav class="navbar navbar-inverse navbar-fixed-top var-bg" id="menu">
     <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -53,48 +53,14 @@
                 <li><a href="#pricing" class="scroll-nav">Contact Us</a></li>
                
                 <li><a href="login.html" class="scroll-nav">Longin</a></li>
-            </ul><!--/.navbar-nav-->
+            <s/ul><!--/.navbar-nav-->
         </div><!--/.navbar-collapse-->
     </div><!--/.container-->
 </nav><!--/.navbar-->
+<div class="page-content page-content-margin"> 
 
-<div class="page-content">
-
-    <!--HEADER-->
-    <!--===============================================================-->
-    <header class="intro-header parallax" data-stellar-background-ratio="0.2" id="intro">
-        <div class="container">
-            <!--<div class="row">
-                <div class="row-md-6">
-                    <div>
-                        <img src="/public/images/home1.png" alt="iPhone" class="img-responsive">
-                    </div>
-                  <di>
-                    <h2><strong style="color: #05414a">Online Car Rental System <b style="color:#97be0c"></b>
-                        
-                  </di>  
-                </div>-->
-                <div class="hidden-xs col-sm-6 col-md-5 hidden-xs">
-                    <div class="smartphone parallax" data-stellar-background-ratio="0.4"></div>
-                </div>
-                <div class="col-xs-12 col-sm-6 col-md-7">
-                    <div class="intro-message">
-                        <div class="visible-xs-block pt20">
-                            <img src="/public/images/home1.png" alt="iPhone" class="img-responsive">
-                        </div>
-                        <h2><strong style="color: #05414a">Online Car Rental System <b style="color:#97be0c"></b>
-                        <div class="header-buttons">
-                            <a href="#pricing" class="btn btn-theme scroll-nav">Price List</a> 
-                            <a href="#about" class="btn btn-theme-alt">Cos'è ASAP Markets 2.0</a>
-                        </div>
-                    </div>
-                </div>
-            </div><!--/.row--> 
-        </div><!--/.container-->            
-    </header><!--/.intro-header-->
-
-    
-<div class="container">
+   
+<div class="container inside-container">
     <div>
       <span id="listOfCars" >List Of Cars Available</span>
       <span style="float: right;" >
@@ -104,13 +70,13 @@
        <div id="divNewPaymentForm">
         <form id="addNewPaymentForm">
             <div class="form-row">
-              <div class="form-group col-md-6">
+              <div class="form-group col-md-6 lable-top">
                 <label for="dateFrom">Date From</label>
                 <input type="date" class="form-control" id="dateFrom" placeholder="mm/dd/yyyy"  required>
                 <small  id="emailHelp" class="form-text text-muted">Select Pickup Date</small>
 
               </div>
-              <div class="form-group col-md-6">
+              <div class="form-group col-md-6 lable-top">
                 <label for="model">Date To</label>
                 <input type="date" class="form-control"  id="returnDate" placeholder="mm/dd/yyyy" required>
                 <small  id="emailHelp" class="form-text text-muted">Select Return Date </small>
