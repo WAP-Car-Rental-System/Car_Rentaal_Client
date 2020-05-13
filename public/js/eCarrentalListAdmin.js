@@ -41,20 +41,12 @@
                         <td>${car.mileage}</td>
                         <td>${car.carColor}</td>
                         <td>${car.transmission}</td>
-<<<<<<< HEAD
                         <td> 
                               <button type='button'  
                                   onclick=addCarCopy(${car.carID});  
                                   class='btn btn-primary btn-lg' data-toggle="modal" data-target="#ModalAdd"> 
                                   Add car Copy
-=======
                         
-                        <td> 
-                              <button type='button' value={${car.carID}} 
-                                  onclick=addCarCopy(this);  
-                                  class='btn btn-default'> 
-                                  Edit
->>>>>>> 742801a92068fe97b09b36ef4723c98fe21f1260
                                  </button>
                         </td>
                     </tr>
@@ -110,12 +102,11 @@
 
     });
 
-<<<<<<< HEAD
-=======
+
   function addCarCopy(IdVaue){
      console.log(IdVaue);
   } 
->>>>>>> 742801a92068fe97b09b36ef4723c98fe21f1260
+
 // on submitting the form
 function saveNewCar(){
     const bookRegistrationForm=document.getElementById("addNewCarForm");
