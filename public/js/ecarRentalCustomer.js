@@ -17,7 +17,7 @@
             "color":"blue",
             "backgraund-color": "gray"
         }});
-        fetch("https://elibraryrestapi.herokuapp.com/elibrary/api/book/list")
+        fetch("http://localhost:8080/careRent/car/rent")
         .then((response)=>{
             if(response.ok){
                 return response.json();
@@ -40,7 +40,13 @@
                         <td>${car.transmission}</td>
                        <td>${car.rentPrice}</td>
                
-                <td>${rentButton.get(0).outerHTML}</td>
+                       <td> 
+                       <button type='button' id={${car.carID}}  value={${car.carID}} 
+                           onclick=addCarCopy(this);  
+                           class='btn btn-default'> 
+                           Edit
+                          </button>
+                 </td>
                     </tr>
                     `;
                 });
@@ -51,7 +57,7 @@
                 </tr>
                 `;
             };
-            $("#addNewBookForm").hide();
+            $("#addNewPaymentForm").hide();
             document.querySelector("#tableBodyCarList").innerHTML=content;
 
         })
@@ -70,8 +76,13 @@
         });
     }
 //************ */
+
+
+
+
 var rentPrice;
-    $("#rentButton").click(function(event){
+
+    $("#${car.carID}").click(function(event){
         rentPrice=$("#rentPrice").val();
         event.preventDefault();
       
