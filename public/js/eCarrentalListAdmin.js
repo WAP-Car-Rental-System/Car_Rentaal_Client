@@ -41,13 +41,11 @@
                         <td>${car.mileage}</td>
                         <td>${car.carColor}</td>
                         <td>${car.transmission}</td>
-                        <td><button onclick='addCarCopy(${car.carID})'>Edit</button></td>
-                        <td><td>${rentButton.get(0).outerHTML}</td>
                         <td> 
                               <button type='button'  
                                   onclick=addCarCopy(${car.carID});  
-                                  class='btn btn-default'> 
-                                  Edit
+                                  class='btn btn-primary btn-lg' data-toggle="modal" data-target="#ModalAdd"> 
+                                  Add car Copy
                                  </button>
                         </td>
                     </tr>
