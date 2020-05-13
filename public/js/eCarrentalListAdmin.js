@@ -101,9 +101,6 @@
 
     });
 
-  function addCarCopy(carId){
-     console.log(carId);
-  } 
 // on submitting the form
 function saveNewCar(){
     const bookRegistrationForm=document.getElementById("addNewCarForm");
@@ -163,6 +160,43 @@ function saveNewCar(){
    
 }
 saveNewCar();
+
+function addNewCarCopy(){
+   const carCopyForm = document.getElementById("carPocyForm");
+   carCopyForm.addEventListener("submit",function(event){
+          event.preventDefault();
+
+    const quantity = document.getElementById("inputuantity").value;
+    const plateNumber = document.getElementById("inputPlateNumber").value;
+    const price = document.getElementById("inputPrice").value;
+    const carId = document.getElementById("carID");
+    console.log(carId);
+    const carCopyId=0
+
+    const newCarCopyData={
+        "quantity":quantity,
+        "available":true,
+        "plateNumber":plateNumber,
+        "carColor":color,
+        "rentPrice" : price,
+        "carId": carId};
+        fetch("http://localhost:8080/careRent/carCopy/new",{
+            method:"post",
+            body:JSON.stringify(newCarCopyData),
+            headers:{
+                "Content-Type":"application/json"
+            } 
+        }).then(function(response){
+            return{"status":"ok"};
+        }) .then(function(jsonResponseData){
+
+        }).catch(function(error){
+            console.error(error);
+        }) 
+
+   });
+}
+   
 })();
 
 

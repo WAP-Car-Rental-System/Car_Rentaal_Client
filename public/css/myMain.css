@@ -164,3 +164,7 @@ th,label{
 #divNewCarForm{
   display: none;width: 100%; margin-bottom: 1em;
 }
+#myModalLabel{
+    color: black;
+    font-weight: bold;
+}
