@@ -87,27 +87,27 @@ var rentPrice;
         rentPrice=$("#rentPrice").val();
         event.preventDefault();
       
-        $("#addNewPaymentForm").show();
+        $("#modalPaymentForm").show();
         $("#carDatTable").hide();
-        const formstate = $("#buttonNewStatus").attr("data-formstate");
-        if(formstate=="off"){
-            $("#buttonNewStatus").text(" ");
-            $("#listOfCars").text("Payment Form");
-            $("#divNewPaymentForm").show("slow");
-            $("#dateFrom").focus();
-            $("#buttonNewStatus").attr("data-formstate","on");
-        }else{
-            $("#buttonNewStatus").text("");
-            $("#listOfCars").text("List Of Available Cars");
-            $("#divNewCarForm").show("slow");
-            $("#brand").focus();
-            $("#buttonNewStatus").attr("data-formstate","off");
-        }
+        // const formstate = $("#buttonNewStatus").attr("data-formstate");
+        // if(formstate=="off"){
+        //     $("#buttonNewStatus").text(" ");
+        //     $("#listOfCars").text("Payment Form");
+        //     $("#divNewPaymentForm").show("slow");
+        //     $("#dateFrom").focus();
+        //     $("#buttonNewStatus").attr("data-formstate","on");
+        // }else{
+        //     $("#buttonNewStatus").text("");
+        //     $("#listOfCars").text("List Of Available Cars");
+        //     $("#divNewCarForm").show("slow");
+        //     $("#brand").focus();
+        //     $("#buttonNewStatus").attr("data-formstate","off");
+        // }
 
     });
 // on submitting the form
 function savePayment(){
-    const bookRegistrationForm=document.getElementById("addNewPaymentForm");
+    const bookRegistrationForm=document.getElementById("modalPaymentForm");
     const txtDateFrom= $("#dateFrom");
     const txtReturnDate=$("#returnDate");
     const txtRentPrice=$("#rentPrice");
@@ -118,7 +118,7 @@ function savePayment(){
    
 
 
-    bookRegistrationForm.addEventListener("submit",function(e){
+    modalPaymentForm.addEventListener("submit",function(e){
         e.preventDefault();
         const dateFrom = txtDateFrom.val();
         const returnDate=txtReturnDate.val();
