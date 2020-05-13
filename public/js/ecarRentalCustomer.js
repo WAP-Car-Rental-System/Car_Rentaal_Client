@@ -83,7 +83,7 @@
 
 var rentPrice;
 
-    $("#${car.carID}").click(function(event){
+    $("#payButton").click(function(event){
         rentPrice=$("#rentPrice").val();
         event.preventDefault();
       
@@ -114,6 +114,9 @@ function savePayment(){
     const txtLicenseNo= $("#licenseNo");
     const txtFullName=$("#fullName");
     const txtAddress=$("#address");
+    const txtCardNo=$("#cardNo");
+   
+
 
     bookRegistrationForm.addEventListener("submit",function(e){
         e.preventDefault();
@@ -123,6 +126,7 @@ function savePayment(){
         const licenseNo = txtLicenseNo.val();
         const fullName=txtFullName.val();
         const address= txtAddress.val();
+        const txtCardNo= txtCardNo.val();
         const newPaymentData={
             "dateFrom":dateFrom,
             "returnDate":returnDate,
@@ -132,7 +136,7 @@ function savePayment(){
             "address":address
         };
         console.log(newPaymentData);
-        fetch("https://elibraryrestapi.herokuapp.com/elibrary/api/book/add",{
+        fetch("http://localhost:8080/careRent/car/rent",{
             method:"post",
             body:JSON.stringify(newPaymentData),
             headers:{
