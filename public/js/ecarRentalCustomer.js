@@ -41,10 +41,11 @@
                        <td>${car.rentPrice}</td>
                
                        <td> 
-                       <button type='button' id={${car.carID}}  value={${car.carID}} 
-                           onclick=addCarCopy(this);  
-                           class='btn btn-default'> 
-                           Edit
+                       <button type='button'  
+                           onclick=addCarCopy(${car.carID});  
+                           class='btn btn-primary btn-lg' data-toggle="modal" data-target="#ModalAdd"> 
+                           Rent
+                 
                           </button>
                  </td>
                     </tr>
