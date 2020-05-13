@@ -41,11 +41,10 @@
                         <td>${car.mileage}</td>
                         <td>${car.carColor}</td>
                         <td>${car.transmission}</td>
-                        <td><button onclick='addCarCopy(${car.carID})'>Edit</button></td>
-                        <td><td>${rentButton.get(0).outerHTML}</td>
+                        
                         <td> 
-                              <button type='button'  
-                                  onclick=addCarCopy(${car.carID});  
+                              <button type='button' value={${car.carID}} 
+                                  onclick=addCarCopy(this);  
                                   class='btn btn-default'> 
                                   Edit
                                  </button>
@@ -103,8 +102,8 @@
 
     });
 
-  function addCarCopy(carId){
-     console.log(carId);
+  function addCarCopy(IdVaue){
+     console.log(IdVaue);
   } 
 // on submitting the form
 function saveNewCar(){
