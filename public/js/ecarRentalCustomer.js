@@ -17,7 +17,7 @@
             "color":"blue",
             "backgraund-color": "gray"
         }});
-        fetch("https://elibraryrestapi.herokuapp.com/elibrary/api/book/list")
+        fetch("http://localhost:8080/careRent/car/rent")
         .then((response)=>{
             if(response.ok){
                 return response.json();
@@ -40,7 +40,14 @@
                         <td>${car.transmission}</td>
                        <td>${car.rentPrice}</td>
                
-                <td>${rentButton.get(0).outerHTML}</td>
+                       <td> 
+                       <button type='button'  
+                           onclick=addCarCopy(${car.carID});  
+                           class='btn btn-primary btn-lg' data-toggle="modal" data-target="#ModalAdd"> 
+                           Rent
+                 
+                          </button>
+                 </td>
                     </tr>
                     `;
                 });
@@ -51,7 +58,7 @@
                 </tr>
                 `;
             };
-            $("#addNewBookForm").hide();
+            $("#addNewPaymentForm").hide();
             document.querySelector("#tableBodyCarList").innerHTML=content;
 
         })
@@ -70,40 +77,48 @@
         });
     }
 //************ */
+
+
+
+
 var rentPrice;
-    $("#rentButton").click(function(event){
+
+    $("#payButton").click(function(event){
         rentPrice=$("#rentPrice").val();
         event.preventDefault();
       
-        $("#addNewPaymentForm").show();
+        $("#modalPaymentForm").show();
         $("#carDatTable").hide();
-        const formstate = $("#buttonNewStatus").attr("data-formstate");
-        if(formstate=="off"){
-            $("#buttonNewStatus").text(" ");
-            $("#listOfCars").text("Payment Form");
-            $("#divNewPaymentForm").show("slow");
-            $("#dateFrom").focus();
-            $("#buttonNewStatus").attr("data-formstate","on");
-        }else{
-            $("#buttonNewStatus").text("");
-            $("#listOfCars").text("List Of Available Cars");
-            $("#divNewCarForm").show("slow");
-            $("#brand").focus();
-            $("#buttonNewStatus").attr("data-formstate","off");
-        }
+        // const formstate = $("#buttonNewStatus").attr("data-formstate");
+        // if(formstate=="off"){
+        //     $("#buttonNewStatus").text(" ");
+        //     $("#listOfCars").text("Payment Form");
+        //     $("#divNewPaymentForm").show("slow");
+        //     $("#dateFrom").focus();
+        //     $("#buttonNewStatus").attr("data-formstate","on");
+        // }else{
+        //     $("#buttonNewStatus").text("");
+        //     $("#listOfCars").text("List Of Available Cars");
+        //     $("#divNewCarForm").show("slow");
+        //     $("#brand").focus();
+        //     $("#buttonNewStatus").attr("data-formstate","off");
+        // }
 
     });
 // on submitting the form
 function savePayment(){
-    const bookRegistrationForm=document.getElementById("addNewPaymentForm");
+    const bookRegistrationForm=document.getElementById("modalPaymentForm");
     const txtDateFrom= $("#dateFrom");
     const txtReturnDate=$("#returnDate");
     const txtRentPrice=$("#rentPrice");
     const txtLicenseNo= $("#licenseNo");
     const txtFullName=$("#fullName");
     const txtAddress=$("#address");
+    const txtCardNo=$("#cardNo");
+   
 
-    bookRegistrationForm.addEventListener("submit",function(e){
+
+    modalPaymentForm.addEventListener("submit",function(e){
         e.preventDefault();
         const dateFrom = txtDateFrom.val();
         const returnDate=txtReturnDate.val();
@@ -111,6 +126,7 @@ function savePayment(){
         const licenseNo = txtLicenseNo.val();
         const fullName=txtFullName.val();
         const address= txtAddress.val();
+        const txtCardNo= txtCardNo.val();
         const newPaymentData={
             "dateFrom":dateFrom,
             "returnDate":returnDate,
@@ -120,7 +136,7 @@ function savePayment(){
             "address":address
         };
         console.log(newPaymentData);
-        fetch("https://elibraryrestapi.herokuapp.com/elibrary/api/book/add",{
+        fetch("http://localhost:8080/careRent/car/rent",{
             method:"post",
             body:JSON.stringify(newPaymentData),
             headers:{

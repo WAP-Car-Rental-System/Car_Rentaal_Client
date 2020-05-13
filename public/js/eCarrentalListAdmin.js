@@ -41,12 +41,12 @@
                         <td>${car.mileage}</td>
                         <td>${car.carColor}</td>
                         <td>${car.transmission}</td>
-                        
                         <td> 
-                              <button type='button' value={${car.carID}} 
-                                  onclick=addCarCopy(this);  
-                                  class='btn btn-default'> 
-                                  Edit
+                              <button type='button'  
+                                  onclick=addCarCopy(${car.carID});  
+                                  class='btn btn-primary btn-lg' data-toggle="modal" data-target="#ModalAdd"> 
+                                  Add car Copy
+                        
                                  </button>
                         </td>
                     </tr>
@@ -102,9 +102,11 @@
 
     });
 
+
   function addCarCopy(IdVaue){
      console.log(IdVaue);
   } 
+
 // on submitting the form
 function saveNewCar(){
     const bookRegistrationForm=document.getElementById("addNewCarForm");
@@ -164,7 +166,46 @@ function saveNewCar(){
    
 }
 saveNewCar();
+
+//function addNewCarCopy(){
+    const carCopyForm = document.getElementById("carPocyForm");
+    console.log("Call Copy");
+    carCopyForm.addEventListener("submit",function(event){
+           event.preventDefault();
+ 
+     const quantity = document.getElementById("inputuantity").value;
+     const plateNumber = document.getElementById("inputPlateNumber").value;
+     const price = document.getElementById("inputPrice").value;
+     const carId = document.getElementById("carID").value;
+     console.log(carId);
+     const carCopyId=0
+ 
+     const newCarCopyData={
+         "quantity":quantity,
+         "available":true,
+         "plateNumber":plateNumber,
+         "rentPrice" : price,
+         "carId": carId};
+         fetch("http://localhost:8080/careRent/carCopy/new",{
+             method:"post",
+             body:JSON.stringify(newCarCopyData),
+             headers:{
+                 "Content-Type":"application/json"
+             } 
+         }).then(function(response){
+             return{"status":"ok"};
+         }) .then(function(jsonResponseData){
+ 
+         }).catch(function(error){
+             console.error(error);
+         }) 
+ 
+    });
+ //}
+   
 })();
+
+
 
 
 
